@@ -102,6 +102,7 @@
         .header-icon {
             height: 1.2em;
             filter: drop-shadow(0 0 8px rgba(241,196,15,0.5));
+            vertical-align: middle;
         }
         .header p { color: #aaa; font-size: 1.2em; margin: 0; }
         
@@ -740,45 +741,37 @@
 <body>
 
     <script>
-        // === CONFIGURAZIONE UTENTE ===
+        // === CONFIGURAZIONE VARGLOB ===
         const GITHUB_USER = 'KekkoTech-Softwares';
         const REPO_NAME = 'KTS-Volley-Scoreboard-Realeses'; 
-        // Valori coerenti con la configurazione di admin.html
         const MAX_TO = 2; 
         const MAX_SUB = 6; 
         
         let currentVersion = 'Caricamento...'; 
 
-        // --- GESTIONE VERSIONE DINAMICA TRAMITE FETCH (Correzione bug) ---
+        // --- CARICA VERSIONE ---
         async function loadVersionAndSetup() {
             try {
-                // Modifica 2: Fix lettura versione da version.txt con randomUUID
                 const response = await fetch('version.txt?' + crypto.randomUUID());
 
                 
                 let version = 'N/D';
                 if (response.ok) {
                     version = (await response.text()).trim();
-                    // Rimuovi prefissi 'v' se presente per standardizzare
                     if (version.toLowerCase().startsWith('v')) version = version.substring(1); 
                 }
 
                 currentVersion = version || 'N/D';
                 
-                // Formatta la versione per la visualizzazione (aggiunge 'v')
                 const displayVersion = currentVersion === 'N/D' ? currentVersion : 'v' + currentVersion;
-                
-                // Determina il tag di rilascio di GitHub (usa 'latest' se la versione non è valida)
                 const githubReleaseTag = currentVersion === 'N/D' ? 'latest' : `v${currentVersion}`;
                 const githubReleaseUrl = `https://github.com/${GITHUB_USER}/${REPO_NAME}/releases/download/${githubReleaseTag}/KTS.Volley.Scoreboard.Setup.exe/`;
                 
-                // Aggiorna l'interfaccia (Modifica 3: Assicurazione che il link download venga aggiornato)
                 document.getElementById('app_version_text').innerText = `Gestisci in maniera semplice ed efficace il tuo tabellone e le tue dirette di pallavolo.`;
                 document.getElementById('version_badge').innerText = displayVersion;
                 document.getElementById('download_link').href = githubReleaseUrl;
                 
             } catch (error) {
-                // Gestione di errori di fetching (es. file non trovato o errore di rete)
                 console.error("Impossibile caricare la versione (Fallback attivo):", error);
                 currentVersion = 'v?.?.? (Fallita)'; 
                 document.getElementById('app_version_text').innerText = `Versione ${currentVersion} - Software per la gestione del tabellone da pallavolo`;
@@ -807,9 +800,6 @@
         function drawDots(containerId, current, max, className) {
             const container = document.getElementById(containerId);
             container.innerHTML = '';
-            
-            // Non è necessario impostare lo stile del contenitore qui, lo facciamo nel CSS
-            
             for(let i=0; i<max; i++) {
                 const d = document.createElement('div');
                 d.className = `${className} ${i < current ? 'active' : ''}`;
@@ -837,7 +827,6 @@
         }
 
         function actSubs(action) {
-            // Modifica 1: Implementazione della logica di actSubs()
             if (action === 'add') {
                 if (miniState.subs < MAX_SUB) miniState.subs++;
             } else if (action === 'sub' && miniState.subs > 0) {
@@ -1251,7 +1240,6 @@ SOFTWARE.
                         content.style.display = 'none';
                         header.classList.remove('active-acc');
                     } else {
-                        // Chiudi tutti gli altri
                         document.querySelectorAll('.accordion-content').forEach(c => c.style.display = 'none');
                         document.querySelectorAll('.accordion-header').forEach(h => h.classList.remove('active-acc'));
 
@@ -1265,7 +1253,7 @@ SOFTWARE.
     </div>
 
     <footer class="footer">
-        &copy; 2026 KekkoTech Softwares | Feedback: <a href="mailto:feedback@kekkotech.it">feedback@kekkotech.it</a> | Supporto: <a href="mailto:support@kekkotech.it">support@kekkotech.it</a>
+        &copy; 2026 KekkoTech Softwares | Feedback: <a href="mailto:feedback@kekkotech.it">feedback@kekkotech.it</a> | Supporto: <a href="mailto:support@kekkotech.it">support@kekkotech.it</a> | <a href="privacy.html">Privacy Policy</a>
     </footer>
 </body>
 </html>
