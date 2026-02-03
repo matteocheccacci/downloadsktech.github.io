@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Pagina non trovata | KTS Volley Scoreboard</title>
+
+    <link rel="icon" href="https://resources.services.kekkotech.com/img/kekkotech/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --glass-base-color: rgba(20, 20, 20, 0.60);
+            --glass-blur: blur(25px) saturate(180%);
+            --glass-border: 1px solid rgba(255,255,255,0.35);
+            --glass-shine: 1px solid rgba(255,255,255,0.7);
+            --main-color: #f1c40f;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            padding: 0;
+
+            background-image: url('https://resources.services.kekkotech.com/vscoreboard/admin.html/img/bkg.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+
+            font-family: 'Roboto', sans-serif;
+            color: #ddd;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            min-height: 100vh;
+            padding: 40px 20px 100px 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .glass-panel {
+            background: linear-gradient(
+                135deg,
+                rgba(255,255,255,0.15) 0%,
+                var(--glass-base-color) 40%,
+                rgba(0,0,0,0.5) 100%
+            );
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: var(--glass-border);
+            border-top: var(--glass-shine);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+            border-radius: 15px;
+            padding: 40px 30px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        /* HEADER */
+        .header h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 5vh;
+            color: var(--main-color);
+            text-shadow: 0 0 10px rgba(241,196,15,0.5);
+            letter-spacing: 2px;
+            margin: 0 0 10px 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .header-icon {
+            height: 1.2em;
+            filter: drop-shadow(0 0 8px rgba(241,196,15,0.5));
+            display: block;
+        }
+
+        .header p {
+            color: #aaa;
+            font-size: 1.2em;
+            margin: 0;
+        }
+
+        /* 404 CONTENT */
+        .error-code {
+            font-family: 'Oswald', sans-serif;
+            font-size: 8rem;
+            font-weight: 600;
+            color: var(--main-color);
+            text-shadow: 0 0 20px rgba(241,196,15,0.6);
+            margin: 10px 0;
+        }
+
+        .error-text {
+            font-size: 1.3em;
+            color: #ccc;
+            margin-bottom: 30px;
+        }
+
+        .home-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+
+            background: var(--main-color);
+            color: #000;
+            padding: 14px 36px;
+            border-radius: 50px;
+
+            font-size: 1.2em;
+            font-weight: 900;
+            text-decoration: none;
+
+            box-shadow: 0 5px 20px rgba(241,196,15,0.5);
+            transition: all 0.3s;
+        }
+
+        .home-btn:hover {
+            background: #ffe566;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(241,196,15,0.7);
+        }
+
+        /* FOOTER */
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            color: #ccc;
+            font-size: 0.9em;
+            width: 100%;
+
+            background: linear-gradient(
+                135deg,
+                rgba(255,255,255,0.1) 0%,
+                rgba(20, 20, 20, 0.5) 100%
+            );
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border-top: var(--glass-border);
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.5);
+            padding: 15px 0;
+
+            position: fixed;
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer a {
+            color: var(--main-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .error-code { font-size: 5.5rem; }
+            .header h1 { font-size: 4vh; }
+            .error-text { font-size: 1.1em; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <header class="header glass-panel">
+            <h1>
+                <img src="img/icon.png" class="header-icon" alt="KTS Volley Scoreboard">
+                KTS Volley Scoreboard
+                <img src="https://resources.services.kekkotech.com/img/kekkotech/logo_black.png" class="header-icon" alt="KekkoTech Logo">   
+            </h1>
+            <p></p>
+        </header>
+
+        <section class="glass-panel">
+            <div class="error-code">404</div>
+            <p class="error-text">
+                La pagina che stai cercando non è stata trovata.<br>
+                Forse il link è sbagliato o la pagina è stata spostata.
+            </p>
+
+            <a href="index.html" class="home-btn">
+                Torna alla Home
+            </a>
+        </section>
+
+    </div>
+
+    <footer class="footer">
+        &copy; 2026 KekkoTech Softwares | Feedback: <a href="mailto:feedback@kekkotech.it">feedback@kekkotech.it</a> | Supporto: <a href="mailto:support@kekkotech.it">support@kekkotech.it</a> | <a href="privacy.html">Privacy Policy</a>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>
